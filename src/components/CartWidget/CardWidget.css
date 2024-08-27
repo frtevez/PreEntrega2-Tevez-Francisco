@@ -1,0 +1,16 @@
+div#cart-widget {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#cart-widget>svg {
+    font-size: 24pt;
+    transition: all 300ms;
+}
+
+div#cart-widget>svg:hover {
+    transition: all 200ms;
+    transform: scale(1.2);
+}
