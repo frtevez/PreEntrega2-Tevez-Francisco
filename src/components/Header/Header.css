@@ -1,0 +1,46 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: slategray;
+    padding: 0px 20px;
+    color: white;
+}
+
+header a {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    color: white;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: auto;
+}
+
+nav menu {
+    display: flex;
+    margin: 0 15px;
+}
+
+nav menu li {
+    text-align: center;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    height: 35px;
+    list-style: none;
+    font-size: 13pt;
+    padding: 15px 5px;
+    transition: all 200ms;
+    background-color: none;
+    cursor: pointer;
+}
+
+nav menu li:hover {
+    background-color: lch(from slategray calc(l*1.2) c h);
+    transition: all 200ms;
+}
