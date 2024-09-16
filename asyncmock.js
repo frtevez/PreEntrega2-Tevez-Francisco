@@ -38,7 +38,39 @@ const PRODUCTS = [
         img:'https://www.rimmersmusic.co.uk/images/roland-lx708-digital-piano-polished-ebony-p42896-87711_image.jpg', 
         description:'As the flagship of Roland’s LX700 series, the LX708 recreates all the pleasures of playing a traditional grand piano in a great live venue. Standing out among the LX range with its tall, commanding cabinet and a lid that opens for optimum sound projection, this luxurious instrument makes a bold statement in your home. And with its powerful eight-speaker system ready to fill your home with music, the LX708 is the ultimate choice for discerning players.',
         section: 'DigitalPianos'
-    }
+    },
+    {
+        id: '6', 
+        name:'Roland Fantom 8 EX Workstation Keyboard', 
+        price:4199.99, 
+        img:'https://kraftmusic.com/cdn/shop/files/ROL-FANTOM8EX_top.jpg?v=1713987589&width=1944', 
+        description:`Roland Fantom 8 EX is the most potent creative keyboard on the planet. The latest chapter in the Fantom legacy supercharges Roland's premier synth platform with next-level capabilities, offering multiple advanced sound engines, enhanced composition and performance tools and superior playability.`,
+        section: 'Workstations'
+    },
+    {
+        id: '7', 
+        name:'Kurzweil K2700 88-Key Music Workstation', 
+        price:2999.00, 
+        img:'https://kraftmusic.com/cdn/shop/files/kur-k2700_top.jpg?v=1695406860&width=1080', 
+        description:`Kurzweil K2700: witness the evolution of legendary Kurzweil K2 Series workstations.`,
+        section: 'Workstations'
+    },
+    {
+        id: '8', 
+        name:'Yamaha Montage M8x Synthesizer', 
+        price:4499.99, 
+        img:'https://kraftmusic.com/cdn/shop/files/YAM-MONTAGEM8X_top.jpg?v=1696873027&width=1944', 
+        description:`Yamaha Montage M8x will help you realize amazing sound with three engines that recreate warm vintage analog synths, cutting-edge FM synths and ultra-realistic instruments. The Motion Control engine enhances these capabilities, adding a unique fourth dimension of control to your music making. Unlike traditional hardware synthesizers, Montage M8x seamlessly bridges stage and studio with deep computer connectivity and integration. Designed to meet the needs of synthesists, keyboardists and pianists, Montage M8x introduces a new era of sound, control and workflow in music creation.`,
+        section: 'Workstations'
+    },
+    {
+        id: '9', 
+        name:'Korg Nautilus 88-Key Music Workstation', 
+        price:2499.99, 
+        img:'https://kraftmusic.com/cdn/shop/files/kor-nautilus88_top.jpg?v=1695406743&width=1080', 
+        description:`Korg Nautilus gives you all the dazzling sounds you need in a streamlined performance synth and workstation with a Kronos pedigree. With the power of nine engines to drive a new approach to sounds, plentiful sampling, audio recording, effects and ample processing power, there is simply no other synth that delivers more to explore sonically, with the workflow to get you there faster than ever.`,
+        section: 'Workstations'
+    },
 ]
 
 
