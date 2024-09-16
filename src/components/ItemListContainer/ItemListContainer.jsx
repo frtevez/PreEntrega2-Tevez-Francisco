@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './ItemListContainer.css'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
-import { getProducts } from '../../../asyncmock'
+import { getProductsByPropertyValue } from '../../../asyncmock'
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([])
@@ -12,7 +12,7 @@ const ItemListContainer = () => {
   const productSectionTitle = productSectionID.replace(/([A-Z])/g, ' $1').trim()
   
   useEffect(() => {{
-    getProducts(productSectionID).then(response => setProducts(response))
+    getProductsByPropertyValue('section', productSectionID).then(response => setProducts(response))
   }}, [productSectionID])
 
   return (
