@@ -1,0 +1,12 @@
+:root {
+    --card-height: 400px;
+    --card-width: 250px;
+}
+
+div#item-list {
+    display: grid;
+    gap: 12px;
+    justify-items: center;
+    padding: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
+}

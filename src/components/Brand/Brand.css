@@ -3,3 +3,21 @@ h1#brand {
     font-size: 28pt;
     cursor: pointer;
 }
+
+h1#brand::after {
+    content: "";
+    background-color: white;
+    width: 100%;
+    display: block;
+    height: 3px;
+    border-radius: 5px;
+    transition: all 200ms;
+    transform: scaleX(0);
+    position: relative;
+    bottom: 5px;
+}
+
+h1#brand:hover::after {
+    transition: all 200ms;
+    transform: scaleX(1);
+}

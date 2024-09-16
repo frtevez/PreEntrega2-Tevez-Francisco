@@ -1,0 +1,10 @@
+
+section#item-list-container>h2 {
+    padding: 8px 0;
+    display: flex;
+    justify-content: center;
+    font-size: 22pt;
+    color: #E0E0E0;
+    font-weight: normal;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
