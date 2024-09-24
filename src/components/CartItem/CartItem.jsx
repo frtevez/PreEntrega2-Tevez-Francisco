@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { CartContext } from "../../context/cartContext"
 import { USformatter } from "../../utils/priceFormatting"
 import "./CartItem.css"
+import { Counter } from "../Counter/Counter"
 
 const CartItem = ({ product }) => {
     const { name, price, amount, img } = product
@@ -20,13 +21,7 @@ const CartItem = ({ product }) => {
             <img src={img} alt="" />
             <h4>{name}</h4>
             <p><strong>US{USformatter.format(price)}</strong></p>
-            <section id="amount">
-                <p>Amount: {amount}</p>
-                <div id='amount-arrows'>
-                    <button onClick={increaseAmount}>▲</button>
-                    <button onClick={decreaseAmount}>▼</button>
-                </div>
-            </section>
+            <Counter label="Amount" number={amount} increaseFunction={increaseAmount} decreaseFunction={decreaseAmount} />
 
         </article>
     )

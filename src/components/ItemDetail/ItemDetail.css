@@ -80,18 +80,3 @@ section#product-details h2,
 section#product-details h3 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
-section#amount {
-    display: flex;
-    align-items: center;
-}
-
-section#amount div#amount-arrows {
-    display: flex;
-    flex-direction: column;
-}
-
-section#amount div#amount-arrows button {
-    font-size: 8pt;
-    margin: 0 5px;
-}

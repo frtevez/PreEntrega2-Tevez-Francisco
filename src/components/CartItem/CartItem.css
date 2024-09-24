@@ -9,3 +9,19 @@ article.cart-product {
 article.cart-product img {
     height: 100%;
 }
+
+article.cart-product button {
+    border: none;
+    border-radius: 3px;
+    background-color: lightsteelblue;
+    padding: 3px;
+    transition: all 200ms;
+}
+
+article.cart-product button:hover {
+    background-color: lch(from lightsteelblue calc(l*1.1) c h);
+}
+
+article.cart-product button:active {
+    background-color: lch(from lightsteelblue calc(l*0.88) c h);
+}
