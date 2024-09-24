@@ -1,0 +1,15 @@
+section#counter {
+    display: flex;
+    align-items: center;
+    margin: 15px 0 0 0 ;
+}
+
+section#amount div#counter-arrows {
+    display: flex;
+    flex-direction: column;
+}
+
+section#amount div#counter-arrows button {
+    font-size: 8pt;
+    margin: 0 5px;
+}

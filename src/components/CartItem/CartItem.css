@@ -1,0 +1,11 @@
+article.cart-product {
+    display: flex;
+    height: 200px;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
+
+article.cart-product img {
+    height: 100%;
+}

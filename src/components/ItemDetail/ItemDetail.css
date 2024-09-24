@@ -19,20 +19,56 @@ section#product-details img {
     margin: 20px 0;
 }
 
-section#product-details p.price {
-    display: flex;
-    justify-content: end;
-    width: 50%;
-    font-weight: bold;
-    font-size: 20pt;
-}
-
 section#product-details h3 {
     display: flex;
     justify-content: start;
     width: 900px;
     padding: 20px 0 10px 0;
     font-size: 20pt;
+}
+
+section#product-details section#main {
+    display: flex;
+    justify-content: center;
+}
+
+section#product-details section#main div#product-submit {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 40px 20px;
+    width: 20%;
+    align-items: end;
+}
+
+
+section#product-details section#main div#product-submit p.price {
+    display: flex;
+    justify-content: end;
+    font-weight: bold;
+    font-size: 20pt;
+    margin: 0 0 25px 0;
+}
+
+section#product-details section#main div#product-submit button {
+    border: none;
+    border-radius: 3px;
+    background-color:lightsteelblue;
+    padding: 3px;
+    transition: all 200ms;
+}
+
+section#product-details section#main div#product-submit button:hover{
+    background-color:lch(from lightsteelblue calc(l*1.1) c h);
+}
+
+section#product-details section#main div#product-submit button:active{
+    background-color:lch(from lightsteelblue calc(l*0.88) c h);
+}
+
+section#product-details section#main div#product-submit button#add-to-cart {
+    margin: 10px 0;
+    padding: 3px 15px;
 }
 
 section#product-details p.description {
@@ -43,4 +79,19 @@ section#product-details p.description {
 section#product-details h2,
 section#product-details h3 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+section#amount {
+    display: flex;
+    align-items: center;
+}
+
+section#amount div#amount-arrows {
+    display: flex;
+    flex-direction: column;
+}
+
+section#amount div#amount-arrows button {
+    font-size: 8pt;
+    margin: 0 5px;
 }
