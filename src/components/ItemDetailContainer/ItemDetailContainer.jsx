@@ -1,6 +1,6 @@
 import ItemDetail from "../ItemDetail/ItemDetail"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Await, useParams } from "react-router-dom"
 import { getProductsByPropertyValue } from "../../../asyncmock"
 
 const ItemDetailContainer = () => {
@@ -8,9 +8,9 @@ const ItemDetailContainer = () => {
 
     const { itemID } = useParams()
 
-    useEffect(() => {{
+    useEffect(() => {
         getProductsByPropertyValue('id', itemID).then(response => setProduct(response))
-      }}, [itemID])
+      }, [itemID])
       
       
     return (

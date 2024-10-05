@@ -1,9 +1,13 @@
 article.cart-product {
     display: flex;
-    height: 200px;
+    height: 100px;
     justify-content: space-around;
     align-items: center;
     align-content: center;
+}
+
+article.cart-product h4 {
+    width: 125px;
 }
 
 article.cart-product img {

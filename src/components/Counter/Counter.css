@@ -1,7 +1,6 @@
 section#counter {
     display: flex;
     align-items: center;
-    margin: 15px 0 0 0 ;
 }
 
 section#counter div#counter-arrows {

@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
-import { USformatter } from '../../utils/priceFormatting'
 import './ItemDetail.css'
 import { CartContext } from '../../context/cartContext'
+import { useCurrency } from '../../hooks/useCurrency'
 import { Counter } from '../Counter/Counter'
 
 const ItemDetail = ({ product }) => {
@@ -23,15 +23,13 @@ const ItemDetail = ({ product }) => {
     addToCart(product, amount)
   }
 
-  const formattedPrice = USformatter.format(price)
-
   return (
     <section id="product-details">
       <h2>{name}</h2>
       <section id='main'>
         <img src={img} alt="" />
         <div id='product-submit'>
-          <p className='price'>US{formattedPrice}</p>
+          <p className='price'>{useCurrency(price, "USD")}</p>
           <Counter label="Amount" number={amount} increaseFunction={increaseAmount} decreaseFunction={decreaseAmount} />
           <button id="add-to-cart" onClick={handleAddToCart}>Add to Cart</button>
         </div>

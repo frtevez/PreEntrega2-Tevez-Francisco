@@ -53,17 +53,17 @@ section#product-details section#main div#product-submit p.price {
 section#product-details section#main div#product-submit button {
     border: none;
     border-radius: 3px;
-    background-color:lightsteelblue;
+    background-color: lightsteelblue;
     padding: 3px;
     transition: all 200ms;
 }
 
-section#product-details section#main div#product-submit button:hover{
-    background-color:lch(from lightsteelblue calc(l*1.1) c h);
+section#product-details section#main div#product-submit button:hover {
+    background-color: lch(from lightsteelblue calc(l*1.1) c h);
 }
 
-section#product-details section#main div#product-submit button:active{
-    background-color:lch(from lightsteelblue calc(l*0.88) c h);
+section#product-details section#main div#product-submit button:active {
+    background-color: lch(from lightsteelblue calc(l*0.88) c h);
 }
 
 section#product-details section#main div#product-submit button#add-to-cart {
@@ -79,4 +79,8 @@ section#product-details p.description {
 section#product-details h2,
 section#product-details h3 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+section#product-details section#main div#product-submit section#counter {
+    margin: 15px 0 0 0;
 }

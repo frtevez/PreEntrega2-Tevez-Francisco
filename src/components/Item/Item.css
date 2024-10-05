@@ -1,5 +1,5 @@
 article.item {
-    background-color:#F0F0F0;
+    background-color: #F0F0F0;
     width: var(--card-width);
     height: max-content;
     padding: 10px;
@@ -7,6 +7,7 @@ article.item {
     border-radius: 8px;
     transition: all 300ms;
     cursor: pointer;
+    position: relative;
 }
 
 a.item-link {
@@ -17,11 +18,12 @@ a.item-link {
 article.item:hover {
     transition: all 300ms;
     transform: scale(1.1);
+    z-index: 2;
 }
 
 
 article.item h2 {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 0 0 5px 0;
     overflow: hidden;
     white-space: nowrap;
@@ -30,9 +32,9 @@ article.item h2 {
 }
 
 
-article.item:hover h2{
+article.item:hover h2 {
     transition: all 300ms;
-    color:cornflowerblue;
+    color: cornflowerblue;
     text-decoration: underline;
 }
 
@@ -48,9 +50,46 @@ article.item p.price {
 }
 
 article.item p.description {
-    margin: 5px 0;
-    text-wrap:wrap;
+    margin: 15px 0;
+    text-wrap: wrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    height: 76px;
+    height: 64px;
+    font-size: 10pt;
+}
+
+.article-cart-icon {
+    background-color: lightsteelblue;
+    padding: 10px 5px;
+    width: 44px !important;
+    height: 32px !important;
+    position: absolute;
+    right: -12px;
+    bottom: -12px;
+    border-radius: 30px;
+    transition: all 400ms !important;
+    transform: scale(1);
+}
+
+.article-cart-icon:hover {
+    transition: all 300ms !important;
+    transform: scale(1.2);
+    background-color: lch(from lightsteelblue calc(l*1.1) c h);
+}
+
+.article-cart-icon:active {
+    transition: all 20ms !important;
+    background-color: lch(from lightsteelblue calc(l*.9) c h);
+}
+
+.article-remove-icon.article-cart-icon {
+    background-color:rgb(244, 48, 34);
+}
+
+.article-remove-icon.article-cart-icon:hover {
+    background-color:lch(from rgb(244, 48, 34) calc(l*1.1) c h);
+}
+
+.article-remove-icon.article-cart-icon:active {
+    background-color:lch(from rgb(244, 48, 34) calc(l*0.9) c h);
 }

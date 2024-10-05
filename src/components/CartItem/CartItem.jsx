@@ -1,8 +1,8 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { CartContext } from "../../context/cartContext"
-import { USformatter } from "../../utils/priceFormatting"
 import "./CartItem.css"
 import { Counter } from "../Counter/Counter"
+import { useCurrency } from "../../hooks/useCurrency"
 
 const CartItem = ({ product }) => {
     const { name, price, amount, img } = product
@@ -20,8 +20,8 @@ const CartItem = ({ product }) => {
         <article className="cart-product">
             <img src={img} alt="" />
             <h4>{name}</h4>
-            <p><strong>US{USformatter.format(price)}</strong></p>
             <Counter label="Amount" number={amount} increaseFunction={increaseAmount} decreaseFunction={decreaseAmount} />
+            <p><strong>{useCurrency(price, "USD")}</strong></p>
 
         </article>
     )
