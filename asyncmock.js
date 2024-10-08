@@ -75,14 +75,14 @@ const PRODUCTS = [
 
 
 
-export const getProductsByPropertyValue = (property, value) => {
-    return new Promise (resolve => {
-        setTimeout(()=>{            
-            let filteredProducts = PRODUCTS.filter(product => product[property] === value)
+// export const getProductsByPropertyValue = (property, value) => {
+//     return new Promise (resolve => {
+//         setTimeout(()=>{            
+//             let filteredProducts = PRODUCTS.filter(product => product[property] === value)
             
-            property != 'id' || (filteredProducts = filteredProducts[0])
+//             property != 'id' || (filteredProducts = filteredProducts[0])
 
-            resolve(filteredProducts)
-        }, 500)
-    })
-}
+//             resolve(filteredProducts)
+//         }, 500)
+//     })
+// }
