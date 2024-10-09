@@ -3,6 +3,7 @@ import './ItemDetail.css'
 import { CartContext } from '../../context/cartContext'
 import { useCurrency } from '../../hooks/useCurrency'
 import { Counter } from '../Counter/Counter'
+import LoadingScreen from '../Loading/LoadingScreen'
 
 const ItemDetail = ({ product }) => {
 
@@ -25,6 +26,7 @@ const ItemDetail = ({ product }) => {
 
   return (
     <section id="product-details">
+      { (!name || !price || !description || !img) && <LoadingScreen />}
       <h2>{name}</h2>
       <section id='main'>
         <img src={img} alt="" />
