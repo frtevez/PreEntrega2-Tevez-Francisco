@@ -1,6 +1,9 @@
-import { createContext, useEffect, useState } from "react";
 
-export const CartContext = createContext({
+import { createContext, useContext, useEffect, useState } from "react";
+
+const storedCart = JSON.parse(sessionStorage.getItem("cart"))
+
+export const CartContext = createContext( storedCart || {
     products: [],
     totalProducts: 0,
     totalCost: 0
@@ -8,9 +11,11 @@ export const CartContext = createContext({
 
 export const CartContextProvider = ({ children }) => {
 
-    const [totalProducts, setTotalProducts] = useState(0)
-    const [totalCost, setTotalCost] = useState(0)
-    const [products, setProducts] = useState([])
+    const cart = useContext(CartContext)
+
+    const [totalProducts, setTotalProducts] = useState(cart.totalProducts)
+    const [totalCost, setTotalCost] = useState(cart.totalCost)
+    const [products, setProducts] = useState(cart.products)
 
     const getFromCart = product => {
 
@@ -88,7 +93,13 @@ export const CartContextProvider = ({ children }) => {
     }
 
     useEffect(() => {
+    
         updateTotals()
+        sessionStorage.setItem("cart", JSON.stringify({
+            products: products,
+            totalProducts: totalProducts,
+            totalCost: totalCost
+        }))
     }, [products])
 
     return (

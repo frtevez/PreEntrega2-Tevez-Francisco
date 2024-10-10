@@ -67,6 +67,7 @@ button#checkout-btn {
     border: none;
     border-radius: 5px;
     background-color:lightsteelblue;
+    color: black;
     height: 50px;
     font-weight: bolder;
     font-size: 13pt;
@@ -83,4 +84,9 @@ button#checkout-btn:hover {
 button#checkout-btn:active {
     transition: all 100ms;
     background-color:lch(from lightsteelblue calc(l*.9) c h);
+}
+
+button#checkout-btn.greyed-out {
+    background-color: #c3c3c3;
+    color: #efefef;
 }

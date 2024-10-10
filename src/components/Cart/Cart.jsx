@@ -1,13 +1,20 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import CartItem from "../CartItem/CartItem"
 import { CartContext } from "../../context/cartContext"
 import "./Cart.css"
 import SummaryItem from "../SummaryItem/SummaryItem"
 import { useCurrency } from "../../hooks/useCurrency"
+import { NavLink } from "react-router-dom"
 
 const Cart = () => {
     const { products, totalCost, clearCart } = useContext(CartContext)
-    
+    const [cartIsEmpty, setCartIsEmpty] = useState(products.length == 0)
+
+    useEffect(() => {
+
+        setCartIsEmpty(products.length == 0)
+    }, [products])
+
 
     return (
         <section id="cart">
@@ -32,7 +39,9 @@ const Cart = () => {
                 </div>
                 <p id="summary-total">Total: {useCurrency(totalCost, "USD")}</p>
                 <div>
-                    <button id="checkout-btn"> CHECKOUT </button>
+                    <NavLink to="/checkout" onClick={e => cartIsEmpty && e.preventDefault()}>
+                        <button id="checkout-btn" className={cartIsEmpty ? "greyed-out" : ""}> CHECKOUT </button>
+                    </NavLink>
                 </div>
             </div>
         </section>
