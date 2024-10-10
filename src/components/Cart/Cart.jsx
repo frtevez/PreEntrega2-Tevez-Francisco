@@ -9,11 +9,11 @@ import { RemoveShoppingCart } from "@mui/icons-material"
 
 const Cart = () => {
     const { products, totalCost, clearCart } = useContext(CartContext)
-    const [cartIsEmpty, setCartIsEmpty] = useState(products.length == 0)
+    const [cartIsEmpty, setCartIsEmpty] = useState(!products.length)
 
     useEffect(() => {
 
-        setCartIsEmpty(products.length == 0)
+        setCartIsEmpty(!products.length)
     }, [products])
 
     const handleClearCart = event => {
@@ -24,7 +24,7 @@ const Cart = () => {
         <section id="cart">
             <ul className="cart-products">
                 {
-                    products[0] == undefined ?
+                    cartIsEmpty ?
                         <h2>No Products In Cart!</h2> :
                         <>
                             {products.map(product =>

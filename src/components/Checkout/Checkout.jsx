@@ -1,11 +1,13 @@
 
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './Checkout.css'
 import { CartContext } from '../../context/cartContext'
 import { useCurrency } from '../../hooks/useCurrency'
+import { addDoc, collection } from 'firebase/firestore'
+import { db } from '../../services/config'
 
 const Checkout = () => {
-    const { products, totalCost } = useContext(CartContext)
+    const { products, totalCost, clearCart } = useContext(CartContext)
     const [name, setName] = useState("")
     const [lastName, setLastName] = useState("")
     const [phone, setPhone] = useState("")
@@ -14,19 +16,51 @@ const Checkout = () => {
     const [emptyWarning, setEmptyWarning] = useState({
         name: false, lastName: false, phone: false, email: false, emailConfirmation: false
     })
+    const [submitButtonState, setSubmitButtonState] = useState(false)
 
 
     const handleBlurred = (e) => {
 
-        let empty = { ...emptyWarning }
+        setEmptyWarning((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value === "",
+        }));
+    }
 
-        e.target.value != "" ? empty[e.target.name] = false : empty[e.target.name] = true
-        setEmptyWarning(empty)
+    useEffect(() => {
+        setSubmitButtonState(
+            !!(name && lastName && email && emailConfirmation && phone && products.length) && email === emailConfirmation
+        );
+
+    }, [name, lastName, email, emailConfirmation, phone, products])
+
+    const submitOrder = event => {
+        event.preventDefault()
+
+        const order = {
+            products: products.map(({ description, img, ...rest }) => rest),
+            customer: { name: name, lastName: lastName, phone: phone, email: email },
+            date: new Date(),
+            total: totalCost,
+        }
+
+        const orderCollection = collection(db, "orders")
+
+        addDoc(orderCollection, order).then(({ generatedOrderId }) => {
+            setName("");
+            setLastName("");
+            setPhone("");
+            setEmail("");
+            setEmailConfirmation("");
+            setEmptyWarning({
+                name: false, lastName: false, phone: false, email: false, emailConfirmation: false
+            });  
+        })
     }
 
     return (
         <section id='checkout'>
-            <form action="">
+            <form action="" onSubmit={submitOrder}>
 
                 <ul id='checkout-fields'>
                     <li className='checkout-field'>
@@ -91,10 +125,12 @@ const Checkout = () => {
                     )}
                     <li id='checkout-total'>
                         <span>Total: </span>
-                        <span>{useCurrency(totalCost,"USD")}</span>
+                        <span>{useCurrency(totalCost, "USD")}</span>
                     </li>
                 </ul>
-                <button type='submit'>SUBMIT ORDER</button>
+                <button id='submit-order-button' type='submit' 
+                className={submitButtonState ? "" : "greyed-out"} 
+                disabled={!submitButtonState}>SUBMIT ORDER</button>
             </form>
         </section>
     )

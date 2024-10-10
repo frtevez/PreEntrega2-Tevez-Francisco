@@ -72,7 +72,7 @@ section#checkout input {
     padding: .4em;
 }
 
-section#checkout form button[type="submit"] {
+section#checkout form button[type="submit"]#submit-order-button {
     margin: 40px 0;
     grid-column: span 2;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -90,5 +90,10 @@ section#checkout form button[type="submit"] {
     }
     &:active {
         background-color: lch(from #2fcb2f calc(l*.9) c h);
+    }
+
+    &.greyed-out {
+        background-color: #c3c3c3;
+        color: #efefef;
     }
 }
