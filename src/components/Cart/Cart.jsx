@@ -5,6 +5,7 @@ import "./Cart.css"
 import SummaryItem from "../SummaryItem/SummaryItem"
 import { useCurrency } from "../../hooks/useCurrency"
 import { NavLink } from "react-router-dom"
+import { RemoveShoppingCart } from "@mui/icons-material"
 
 const Cart = () => {
     const { products, totalCost, clearCart } = useContext(CartContext)
@@ -15,16 +16,29 @@ const Cart = () => {
         setCartIsEmpty(products.length == 0)
     }, [products])
 
+    const handleClearCart = event => {
+        clearCart()
+    }
 
     return (
         <section id="cart">
             <ul className="cart-products">
                 {
-                    products[0] == undefined ? <h2>No Products In Cart!</h2>
-                        : products.map(product =>
-                            <li key={product.id} className="cart-product">
-                                <CartItem product={product} />
-                            </li>)
+                    products[0] == undefined ?
+                        <h2>No Products In Cart!</h2> :
+                        <>
+                            {products.map(product =>
+                                <li key={product.id} className="cart-product">
+                                    <CartItem product={product} />
+                                </li>)}
+                            <li className="clear-cart">
+                                <button onClick={handleClearCart}>
+                                    <RemoveShoppingCart className="clear-cart-icon" />
+                                    <p>Clear Cart</p>
+                                </button>
+                            </li>
+                        </>
+
                 }
             </ul>
             <div id="summary">

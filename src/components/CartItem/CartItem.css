@@ -5,6 +5,10 @@ article.cart-product {
     align-items: center;
     align-content: center;
     position: relative;
+    border-bottom: 2px inset #dbdbdb;
+    border-radius: 10px;
+    border-bottom-left-radius: 35px;
+    margin: 2px 0;
 }
 
 article.cart-product h4 {
