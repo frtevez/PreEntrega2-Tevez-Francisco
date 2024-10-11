@@ -20,11 +20,6 @@ const Checkout = () => {
     const [submitButtonState, setSubmitButtonState] = useState(false)
     const navigate = useNavigate()
 
-    const handleClearCart = () => {
-        clearCart();
-
-    }
-
     const handleBlurred = (e) => {
 
         setEmptyWarning((prev) => ({
@@ -145,8 +140,6 @@ const Checkout = () => {
                     disabled={!submitButtonState}>SUBMIT ORDER</button>
 
             </form>
-            <button id='submit-order-button'
-                onClick={handleClearCart}>clear</button>
         </section>
     )
 }
