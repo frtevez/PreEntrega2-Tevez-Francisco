@@ -1,5 +1,21 @@
-Pre Entrega 2
+Euphonia E-commerce
 ---
-Tienda de teclados y software musical.
+Este es un proyecto de ecommerce en React JS utilizando Vite.
 
-Las consignas se pueden ver cumplidas en las secciones 'Digital Pianos' y 'Workstations'.
+Características:
+- Carrito de compras con todas las funcionalidades correspondientes.
+- Productos dinámicamente obtenidos de una base de datos en firebase.
+- Checkout con envío de orden de compra a la base de datos de firebase.
+
+Bibliotecas/Libraries:
+- Material UI
+- Sweetalert 2
+
+---
+
+Instalación Local:
+1. Clonar el repositorio o descargarlo.
+2. Abrir una terminal dentro del directorio del proyecto.
+3. Ejecutar el comando npm install.
+4. Ejecutar el comando npm run dev.
+5. Entrar al link del localhost provisto en la consola.
