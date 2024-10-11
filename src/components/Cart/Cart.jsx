@@ -6,6 +6,9 @@ import SummaryItem from "../SummaryItem/SummaryItem"
 import { useCurrency } from "../../hooks/useCurrency"
 import { NavLink } from "react-router-dom"
 import { RemoveShoppingCart } from "@mui/icons-material"
+import Swal from "sweetalert2"
+
+
 
 const Cart = () => {
     const { products, totalCost, clearCart } = useContext(CartContext)
@@ -17,7 +20,21 @@ const Cart = () => {
     }, [products])
 
     const handleClearCart = event => {
-        clearCart()
+        Swal.fire({
+            title: "This will remove all the items in your cart!",
+            text: "Do you wish to continue?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes",
+            cancelButtonText: "No"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                clearCart()
+            }
+          });
+        
     }
 
     return (

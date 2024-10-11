@@ -8,7 +8,7 @@ import { db } from '../../services/config'
 import { useNavigate } from 'react-router-dom'
 
 const Checkout = () => {
-    const { products, totalCost, clearCart } = useContext(CartContext)
+    const { products, totalCost } = useContext(CartContext)
     const [name, setName] = useState("")
     const [lastName, setLastName] = useState("")
     const [phone, setPhone] = useState("")
