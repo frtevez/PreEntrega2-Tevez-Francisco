@@ -8,6 +8,8 @@ import { CartContextProvider } from './context/CartContext'
 import CartContainer from './components/CartContainer/CartContainer'
 import Checkout from './components/Checkout/Checkout'
 import CheckoutSuccess from './components/Checkout/CheckoutSuccess'
+import Footer from './components/Footer/Footer'
+import './App.css'
 
 export const App = () => {
   return (
@@ -24,7 +26,7 @@ export const App = () => {
             <Route path="/checkout-success" element={<CheckoutSuccess />} />
           </Routes>
         </main>
-        <footer></footer>
+        <Footer/>
       </CartContextProvider>
     </BrowserRouter>
   )
