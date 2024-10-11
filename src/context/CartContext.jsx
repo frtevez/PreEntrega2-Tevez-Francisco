@@ -1,21 +1,19 @@
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
-const storedCart = JSON.parse(sessionStorage.getItem("cart"))
-
-export const CartContext = createContext( storedCart || {
+const storedCart = JSON.parse(sessionStorage.getItem("cart")) || {
     products: [],
     totalProducts: 0,
     totalCost: 0
-})
+}
+
+export const CartContext = createContext(storedCart)
 
 export const CartContextProvider = ({ children }) => {
 
-    const cart = useContext(CartContext)
-
-    const [totalProducts, setTotalProducts] = useState(cart.totalProducts)
-    const [totalCost, setTotalCost] = useState(cart.totalCost)
-    const [products, setProducts] = useState(cart.products)
+    const [totalProducts, setTotalProducts] = useState(storedCart.totalProducts || 0)
+    const [totalCost, setTotalCost] = useState(storedCart.totalCost || 0)
+    const [products, setProducts] = useState(storedCart.products || [])
 
     const getFromCart = product => {
 
@@ -25,18 +23,24 @@ export const CartContextProvider = ({ children }) => {
 
     const updateTotals = () => {
 
+
         setTotalProducts(0)
         setTotalCost(0)
-        let totalProducts = 0
-        let totalCost = 0
-
-        products.map(object => {
-            totalProducts = totalProducts + object.amount
-            totalCost = totalCost + (object.amount * object.price)
+        
+        products.map(product => {
+            setTotalProducts(prev => prev + product.amount)
+            setTotalCost(prev => prev + (product.amount * product.price))
         })
 
-        setTotalProducts(totalProducts)
-        setTotalCost(totalCost)
+
+    }
+
+    const updateSessionStorage = () => {
+        sessionStorage.setItem("cart", JSON.stringify({
+            products: products,
+            totalProducts: totalProducts,
+            totalCost: totalCost
+        }))
     }
 
 
@@ -44,6 +48,7 @@ export const CartContextProvider = ({ children }) => {
 
         let newCart = products.filter((object, index) => index != productIndex)
         setProducts(newCart)
+        
     }
 
     const updateAmount = (productIndex, addedAmount) => {
@@ -55,18 +60,20 @@ export const CartContextProvider = ({ children }) => {
             return
         }
         setProducts(newCart)
+        
     }
 
     const pushToCart = (submittedProduct, submittedAmount) => {
         let newCart = [...products, { ...submittedProduct, amount: submittedAmount }]
         setProducts(newCart);
+        
     }
 
     const addToCart = (submittedProduct, amount) => {
         const product = getFromCart(submittedProduct)
 
         product.isInCart ? updateAmount(product.index, amount)
-            : pushToCart(submittedProduct, amount);
+            : pushToCart(submittedProduct, amount)
     }
 
     const addOrSubtractProduct = (modifiedProduct, addOrSubtract) => {
@@ -84,23 +91,24 @@ export const CartContextProvider = ({ children }) => {
         if (addOrSubtract == 'subtract') {
             updateAmount(product.index, -1)
         }
+
+
     }
 
     const clearCart = () => {
         setProducts([])
         setTotalProducts(0)
         setTotalCost(0)
-    }
+        
+    };
 
-    useEffect(() => {
-    
+    useEffect(()=>{
         updateTotals()
-        sessionStorage.setItem("cart", JSON.stringify({
-            products: products,
-            totalProducts: totalProducts,
-            totalCost: totalCost
-        }))
-    }, [products])
+        updateSessionStorage()
+
+    }, [products, totalProducts, totalCost])
+
+
 
     return (
         <CartContext.Provider value={{ products, totalProducts, totalCost, removeProduct, addToCart, addOrSubtractProduct, clearCart }}>

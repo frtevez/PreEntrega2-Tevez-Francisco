@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import './Item.css'
 import { useCurrency } from '../../hooks/useCurrency'
-import { CartContext } from '../../context/cartContext'
+import { CartContext } from '../../context/CartContext'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
 import { RemoveCircleOutline } from '@mui/icons-material'
 

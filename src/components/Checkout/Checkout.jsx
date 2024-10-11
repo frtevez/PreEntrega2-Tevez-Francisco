@@ -1,10 +1,11 @@
 
 import { useContext, useEffect, useState } from 'react'
 import './Checkout.css'
-import { CartContext } from '../../context/cartContext'
+import { CartContext } from '../../context/CartContext'
 import { useCurrency } from '../../hooks/useCurrency'
 import { addDoc, collection } from 'firebase/firestore'
 import { db } from '../../services/config'
+import { useNavigate } from 'react-router-dom'
 
 const Checkout = () => {
     const { products, totalCost, clearCart } = useContext(CartContext)
@@ -17,7 +18,12 @@ const Checkout = () => {
         name: false, lastName: false, phone: false, email: false, emailConfirmation: false
     })
     const [submitButtonState, setSubmitButtonState] = useState(false)
+    const navigate = useNavigate()
 
+    const handleClearCart = () => {
+        clearCart();
+
+    }
 
     const handleBlurred = (e) => {
 
@@ -44,19 +50,25 @@ const Checkout = () => {
             total: totalCost,
         }
 
-        const orderCollection = collection(db, "orders")
+        addDoc(collection(db, "orders"), order)
+            .then(({id: newOrderId}) => {
+                
 
-        addDoc(orderCollection, order).then(({ generatedOrderId }) => {
-            setName("");
-            setLastName("");
-            setPhone("");
-            setEmail("");
-            setEmailConfirmation("");
-            setEmptyWarning({
-                name: false, lastName: false, phone: false, email: false, emailConfirmation: false
-            });  
-        })
+                setName("");
+                setLastName("");
+                setPhone("");
+                setEmail("");
+                setEmailConfirmation("");
+                setEmptyWarning({
+                    name: false, lastName: false, phone: false, email: false, emailConfirmation: false
+                });
+
+                navigate("/checkout-success", { state: { id: newOrderId } });
+            })
+
     }
+
+
 
     return (
         <section id='checkout'>
@@ -128,10 +140,13 @@ const Checkout = () => {
                         <span>{useCurrency(totalCost, "USD")}</span>
                     </li>
                 </ul>
-                <button id='submit-order-button' type='submit' 
-                className={submitButtonState ? "" : "greyed-out"} 
-                disabled={!submitButtonState}>SUBMIT ORDER</button>
+                <button id='submit-order-button' type='submit'
+                    className={submitButtonState ? "" : "greyed-out"}
+                    disabled={!submitButtonState}>SUBMIT ORDER</button>
+
             </form>
+            <button id='submit-order-button'
+                onClick={handleClearCart}>clear</button>
         </section>
     )
 }

@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import './ItemDetail.css'
-import { CartContext } from '../../context/cartContext'
+import { CartContext } from '../../context/CartContext'
 import { useCurrency } from '../../hooks/useCurrency'
 import { Counter } from '../Counter/Counter'
 import LoadingScreen from '../Loading/LoadingScreen'

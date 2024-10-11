@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react"
-import { CartContext } from "../../context/cartContext"
+import { CartContext } from "../../context/CartContext"
 import "./CartItem.css"
 import { Counter } from "../Counter/Counter"
 import { useCurrency } from "../../hooks/useCurrency"
