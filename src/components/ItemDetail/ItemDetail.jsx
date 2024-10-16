@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './ItemDetail.css'
 import { CartContext } from '../../context/CartContext'
 import { useCurrency } from '../../hooks/useCurrency'
@@ -24,9 +24,13 @@ const ItemDetail = ({ product }) => {
     addToCart(product, amount)
   }
 
+  useEffect(() => {
+    document.title = name + " - Euphonia"
+  }, [name])
+
   return (
     <section id="product-details">
-      { (!name || !price || !description || !img) && <LoadingScreen />}
+      {(!name || !price || !description || !img) && <LoadingScreen />}
       <h2>{name}</h2>
       <section id='main'>
         <img src={img} alt="" />

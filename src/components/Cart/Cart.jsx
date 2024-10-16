@@ -19,6 +19,8 @@ const Cart = () => {
         setCartIsEmpty(!products.length)
     }, [products])
 
+    useEffect(() => { document.title = `Cart - Euphonia` }, [])
+
     const handleClearCart = event => {
         Swal.fire({
             title: "This will remove all the items in your cart!",
@@ -29,12 +31,12 @@ const Cart = () => {
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes",
             cancelButtonText: "No"
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 clearCart()
             }
-          });
-        
+        });
+
     }
 
     return (

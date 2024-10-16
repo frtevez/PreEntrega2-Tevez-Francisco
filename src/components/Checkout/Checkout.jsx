@@ -35,6 +35,8 @@ const Checkout = () => {
 
     }, [name, lastName, email, emailConfirmation, phone, products])
 
+    useEffect(() => { document.title = "Checkout - Euphonia" }, [])
+
     const submitOrder = event => {
         event.preventDefault()
 

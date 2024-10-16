@@ -1,6 +1,10 @@
+import { useEffect } from 'react'
 import './Home.css'
 
 const Home = () => {
+
+    useEffect(() => { document.title = "Home - Euphonia" }, [])
+
     return (
         <section id='home'>
             <h1 id='home-title'>Where the right sounds converge</h1>

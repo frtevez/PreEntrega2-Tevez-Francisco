@@ -7,6 +7,7 @@ const CheckoutSuccess = () => {
     const orderId = useLocation().state.id
 
     useEffect(()=>{
+        document.title = "Success! - Euphonia"
         clearCart()
     }, [])
 
